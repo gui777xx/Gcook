@@ -252,8 +252,8 @@ public class AppDbSeed
         List<IdentityUser> users = new() {
             new IdentityUser(){
                 Id = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
-                Email = "admin@gcook.com",
-                NormalizedEmail = "ADMIN@GCOOK.COM",
+                Email = "admin@GCook.com",
+                NormalizedEmail = "ADMIN@GCook.COM",
                 UserName = "Admin",
                 NormalizedUserName = "ADMIN",
                 LockoutEnabled = false,

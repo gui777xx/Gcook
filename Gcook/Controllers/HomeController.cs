@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Gcook.Models;
+using GCook.Models;
 
-namespace Gcook.Controllers;
+namespace GCook.Controllers;
 
 public class HomeController : Controller
 {

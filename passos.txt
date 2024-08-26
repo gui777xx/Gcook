@@ -3,10 +3,23 @@ git config --global user.name gui777x
 git config --global user.email guizin.clementino@gmail.com
 
 Criar um projeto AspNet MVC
-dotnet new  mvc -o Gcook
-dotnet new sln --name Gcook
-dotnet sln add Gcook\Gcook.csproj 
+dotnet new  mvc -o GCook
+dotnet new sln --name GCook
+dotnet sln add GCook\GCook.csproj 
 
 Executar o projeto
 dotnet run
 dotnet watch run
+
+criando e executando migrações:
+    vereficar se tem a ferramenta:    
+        dotnet ef
+    intalar a ferramenta:
+        dotnet tool install --global dotnet-ef --version 8.0.8
+    Atualizar a ferramenta:
+        dotnet tool update --global dotnet-ef --version 8.0.8
+
+criar uma migração:
+    dotnet ef migrations add criarBanco
+Aplicar a migração:
+    dotnet ef database update
