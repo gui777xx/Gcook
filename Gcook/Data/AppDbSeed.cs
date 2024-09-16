@@ -252,8 +252,8 @@ public class AppDbSeed
         List<IdentityUser> users = new() {
             new IdentityUser(){
                 Id = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
-                Email = "admin@GCook.com",
-                NormalizedEmail = "ADMIN@GCook.COM",
+                Email = "admin@gcook.com",
+                NormalizedEmail = "ADMIN@GCOOK.COM",
                 UserName = "Admin",
                 NormalizedUserName = "ADMIN",
                 LockoutEnabled = false,
@@ -270,7 +270,7 @@ public class AppDbSeed
         List<Usuario> usuarios = new(){
             new Usuario(){
                 UsuarioId = users[0].Id,
-                Nome = "Alisson",
+                Nome = "José Antonio Gallo Junior",
                 DataNascimento = DateTime.Parse("05/08/1981"),
                 Foto = "/img/usuarios/avatar.png"
             }

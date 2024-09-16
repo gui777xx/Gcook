@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace Gcook.Migrations
+namespace GCook.Migrations
 {
     /// <inheritdoc />
     public partial class criarBanco : Migration
@@ -358,7 +358,7 @@ namespace Gcook.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", 0, "aef516a8-97fd-4cb2-8b5b-3c283d87396e", "admin@GCook.com", true, false, null, "ADMIN@GCook.COM", "ADMIN", "AQAAAAIAAYagAAAAEEHZZEOXSiv2ATwKha9NGuRaP+bScb5cnPFAdXYZu59R3oVMIbJxAK1v6t7oaHQ6lg==", null, false, "b9a90182-4135-45ca-b78c-b1af972e2c9b", false, "Admin" });
+                values: new object[] { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", 0, "948c5db8-c974-4510-8d8f-c48f2ebf867e", "admin@gcook.com", true, false, null, "ADMIN@GCOOK.COM", "ADMIN", "AQAAAAIAAYagAAAAEPlZAp8O0gfvA2JfMaEZLhLy2QvlLNstuUVM7ZfyEndlRY9xpNwxT/CDfF5bzHrCAA==", null, false, "591f1a3e-d0ab-4648-965d-a6eb4af0dff8", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "Categoria",
@@ -416,7 +416,7 @@ namespace Gcook.Migrations
             migrationBuilder.InsertData(
                 table: "Usuario",
                 columns: new[] { "UsuarioId", "DataNascimento", "Foto", "Nome" },
-                values: new object[] { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", new DateTime(1981, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/avatar.png", "Alisson" });
+                values: new object[] { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", new DateTime(1981, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/avatar.png", "José Antonio Gallo Junior" });
 
             migrationBuilder.InsertData(
                 table: "ReceitaIngrediente",
