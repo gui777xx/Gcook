@@ -3,7 +3,7 @@ using System.Net.Mail;
 
 namespace GCook.Services;
 
-public class EmailSender : IEmailSender
+public class EmailSender : IEmailSender 
 {
   public async Task SendEmailAsync(string emailAddress, string subject, string htmlMessage) 
   {
