@@ -7,20 +7,20 @@
 
 <form class="form-signin" method="post">
     <div asp-validation-summary="ModelOnly" hidden></div>
-    <input type="hidden" asp-for="UrlRetorno" />
+    <input type="hidden" asp-for="UrlRetorno">
 
     <div class="form-floating mb-3">
-        <input asp-for="Email" class="form-control" />
+        <input asp-for="Email" class="form-control">
         <label asp-for="Email"></label>
         <span asp-validation-for="Email" class="text-danger text-sm"></span>
     </div>
     <div class="form-floating mb-3">
-        <input asp-for="Senha" class="form-control" />
+        <input asp-for="Senha" class="form-control">
         <label asp-for="Senha"></label>
         <span asp-validation-for="Senha" class="text-danger text-sm"></span>
     </div>
     <div class="mb-3 form-check text-white">
-        <input type="checkbox" class="form-check-input" asp-for="Lembrar" />
+        <input type="checkbox" class="form-check-input" asp-for="Lembrar">
         <label class="form-check-label" asp-for="Lembrar"></label>
     </div>
     <button class="btn btn-lg w-100 btn-danger" type="submit">Entrar</button>
@@ -33,16 +33,16 @@
 </p>
 
 @section Scripts {
-    <script type="text/javascript">
-        let mensagemErro = '';
-        $(".validation-summary-errors ul li").each(function () {
-            mensagemErro += $(this).text() + '<br/>';
-        });
-        if (mensagemErro != '') {
-            swal.fire(
-                'Acesso Negado',
-                mensagemErro,
-                'error'
-            );
+    <script type ="text/javascript">
+    let mensagemErro = '';
+    $(".validation-summary-errors ul li").each(function () {
+        mensagemErro += $(this).text() + '<br/>';
+    });
+    if (mensagemErro != '')
+        swal.fire(
+            'Acesso Negado',
+            mensagemErro,
+            'error'
+        );
     </script>
 }

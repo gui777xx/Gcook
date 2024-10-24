@@ -1,6 +1,6 @@
 namespace GCook.Services;
 
-public interface IEmailSender 
+public interface IEmailSender
 {
-    Task SendEmailASync(string email, string subject, string htmlMessage);
+    Task SendEmailAsync(string email, string subject, string htmlMessage);
 }

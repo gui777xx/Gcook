@@ -1,5 +1,5 @@
-using Gcook.ViewModels;
 using GCook.Services;
+using GCook.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GCook.Controllers;
@@ -20,7 +20,7 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult Login(string returnUrl)
+    public IActionResult Login (string returnUrl)
     {
         LoginVM login = new()
         {
@@ -41,9 +41,9 @@ public class AccountController : Controller
             if (result.IsLockedOut)
                 return RedirectToAction("Lockout");
             if (result.IsNotAllowed)
-                ModelState.AddModelError(string.Empty, "Sua conta não esta confirmada, verifique seu email");
+                ModelState.AddModelError(string.Empty, "Sua conta não está confirmada, verifique seu email!!");
             else
-                ModelState.AddModelError(string.Empty, "usuário e/ou senha invalidos!!!");
+                ModelState.AddModelError(string.Empty, "Usuário e/ou Senha Inválidos!!!");
         }
         return View(login);
     }
@@ -53,7 +53,7 @@ public class AccountController : Controller
     public async Task<IActionResult> Logout()
     {
         await _usuarioService.LogoffUsuario();
-        return RedirectToAction("index", "Home");
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpGet]
@@ -86,7 +86,7 @@ public class AccountController : Controller
     {
         if (userId == null || code == null)
         {
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("Index", "Home");
         }
         await _usuarioService.ConfirmarEmail(userId, code);
         return View(true);

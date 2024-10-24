@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GCook.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240826151511_criarBanco")]
+    [Migration("20240826152038_criarBanco")]
     partial class criarBanco
     {
         /// <inheritdoc />
@@ -430,9 +430,9 @@ namespace GCook.Migrations
                         new
                         {
                             UsuarioId = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
-                            DataNascimento = new DateTime(1981, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataNascimento = new DateTime(2007, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "/img/usuarios/avatar.png",
-                            Nome = "José Antonio Gallo Junior"
+                            Nome = "Carlos Eduardo Passarelli da Silva"
                         });
                 });
 
@@ -575,15 +575,15 @@ namespace GCook.Migrations
                         {
                             Id = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "948c5db8-c974-4510-8d8f-c48f2ebf867e",
+                            ConcurrencyStamp = "cd47e39b-77b4-4be2-a5a3-103382ba4934",
                             Email = "admin@gcook.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GCOOK.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPlZAp8O0gfvA2JfMaEZLhLy2QvlLNstuUVM7ZfyEndlRY9xpNwxT/CDfF5bzHrCAA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN9DJORZNqWGzsS0KImMNlDvLyT0XOtU6wQz2KghdpkMfcT8e6NlES6s9E7I0xrwug==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "591f1a3e-d0ab-4648-965d-a6eb4af0dff8",
+                            SecurityStamp = "69c9d420-fd3e-450b-b63e-ed8c96c60492",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });

@@ -1,7 +1,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using GCook.Data;
-using Gcook.ViewModels;
+using GCook.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using GCook.Helpers;
 using GCook.Models;
@@ -34,7 +34,7 @@ public class UsuarioService : IUsuarioService
         IWebHostEnvironment hostEnvironment,
         IEmailSender emailSender,
         ILogger<UsuarioService> logger
-)
+    )
     {
         _contexto = contexto;
         _signInManager = signInManager;
@@ -49,7 +49,7 @@ public class UsuarioService : IUsuarioService
 
     public async Task<bool> ConfirmarEmail(string userId, string code)
     {
-        var user = await _userManager.FindByEmailAsync(userId);
+        var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
         {
             return false;
@@ -76,7 +76,7 @@ public class UsuarioService : IUsuarioService
             Nome = usuario.Nome,
             DataNascimento = usuario.DataNascimento,
             Foto = usuario.Foto,
-            Email = userAccount.UserName,
+            Email = userAccount.Email,
             UserName = userAccount.UserName,
             Perfil = perfis,
             IsAdmin = admin
@@ -96,12 +96,12 @@ public class UsuarioService : IUsuarioService
 
         var result = await _signInManager.PasswordSignInAsync(
             userName, login.Senha, login.Lembrar, lockoutOnFailure: true
-            );
+        );
 
         if (result.Succeeded)
             _logger.LogInformation($"Usuário {login.Email} acessou o sistema");
         if (result.IsLockedOut)
-            _logger.LogWarning($"Usúario {login.Email} está bloqueado");
+            _logger.LogWarning($"Usuário {login.Email} está bloqueado");
 
         return result;
     }
@@ -116,8 +116,8 @@ public class UsuarioService : IUsuarioService
     {
         var user = Activator.CreateInstance<IdentityUser>();
 
-        await _userStore.SetUserNameAsync(user, registro.Email, cancellationToken.None);
-        await _emailSender.SendEmailASync(user, registro.Email, cancellationToken.None);
+        await _userStore.SetUserNameAsync(user, registro.Email, CancellationToken.None);
+        await _emailStore.SetEmailAsync(user, registro.Email, CancellationToken.None);
         var result = await _userManager.CreateAsync(user, registro.Senha);
 
         if (result.Succeeded)
@@ -129,9 +129,9 @@ public class UsuarioService : IUsuarioService
             code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
             var url = $"http://localhost:5143/Account/ConfirmarEmail?userId={userId}&code={code}";
 
-            await _userManager.AddToRolesAsync(user, "Usuario");
+            await _userManager.AddToRoleAsync(user, "Usuário");
 
-            await _emailSender.SendEmailASync(registro.Email, "GCook - Criação de Conta", GetConfirmEmailHtml(HtmlEncoder.Default.Encode(url)));
+            await _emailSender.SendEmailAsync(registro.Email, "GCook - Crição de Conta", GetConfirmEmailHtml(HtmlEncoder.Default.Encode(url)));
 
             // Cria a conta pessoal do usuário
             Usuario usuario = new()
@@ -156,7 +156,7 @@ public class UsuarioService : IUsuarioService
 
             return null;
         }
-
+        
         List<string> errors = new();
         foreach (var error in result.Errors)
         {
@@ -164,6 +164,7 @@ public class UsuarioService : IUsuarioService
         }
         return errors;
     }
+
 
     private string GetConfirmEmailHtml(string url)
     {

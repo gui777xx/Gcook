@@ -33,20 +33,20 @@ public class HomeController : Controller
                 .Include(r => r.Categoria)
                 .Include(r => r.Ingredientes)
                 .AsNoTracking()
-                .ToList()
+                .ToList() 
         };
         return View(home);
     }
-    
+
     public IActionResult Receita(int id)
     {
         Receita receita = _context.Receitas
-        .Include(r => r.Categoria)
-        .Include(r => r.Ingredientes)
-        .ThenInclude(r1 => r1.Ingrediente)
-        .AsNoTracking()
-        .FirstOrDefault(r => r.Id == id);
-    return View(receita);
+            .Include(r => r.Categoria)
+            .Include (r => r.Ingredientes)
+            .ThenInclude(ri => ri.Ingrediente)
+            .AsNoTracking()
+            .FirstOrDefault(r => r.Id == id);
+        return View(receita);
     }
 
     public IActionResult Privacy()

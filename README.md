@@ -1,2 +1,2 @@
 # GCook
-Projeto .Net MVC - Code Fist, para cadastro e apresentação de receitas culinária
+Projeto .Net MVC - Code First, para cadastro e apresentação de receitas culinárias.
