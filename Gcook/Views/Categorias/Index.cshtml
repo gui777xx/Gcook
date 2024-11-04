@@ -1,0 +1,57 @@
+@model IEnumerable<GCook.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+    Layout = "~/Views/Shared/_LayoutAdmih.cshtml";
+}
+
+<h1>Categorias</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">
+        <i class="bi bi-plus-circle-dotted me-2"></i>
+        Adicionar
+        </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExibirHome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExibirHome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">
+                        <i class="bi bi-brilliance me-2"></i>
+                </a> 
+                <a asp-action="Details" asp-route-id="@item.Id">
+                        <i class="bi bi-search me-2"></i>
+                </a> 
+                <a asp-action="Delete" asp-route-id="@item.Id">
+                        <i class="bi bi-trash2 me-2"></i>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
