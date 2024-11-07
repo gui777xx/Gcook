@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GCook.Data;
 using GCook.Models;
 
-namespace Gcook.Controllers
+namespace GCook.Controllers
 {
     public class CategoriasController : Controller
     {

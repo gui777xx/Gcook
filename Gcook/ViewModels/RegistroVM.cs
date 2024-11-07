@@ -4,7 +4,7 @@ namespace GCook.ViewModels;
 
 public class RegistroVM
 {
-    [Display(Name = "Nome Completo", Prompt =  "Informe seu Nome Completo")]
+    [Display(Name = "Nome Completo", Prompt = "Informe seu Nome Completo")]
     [Required(ErrorMessage = "Por favor, informe seu Nome")]
     [StringLength(60, ErrorMessage = "O Nome deve possuir no máximo 60 caracteres")]
     public string Nome { get; set; }
@@ -23,7 +23,7 @@ public class RegistroVM
     [DataType(DataType.Password)]
     [Display(Name = "Senha de Acesso", Prompt = "Informe uma Senha para Acesso")]
     [Required(ErrorMessage = "Por favor, informe sua Senha de Acesso")]
-    [StringLength(20, MinimumLength = 6, ErrorMessage = "A Senha deve possuir no mínimo 6 e no máximo 20 caracteres")]
+    [StringLength(20, MinimumLength = 6, ErrorMessage = "A Senha deve possuir no minimo 6 e no máximo 20 caracteres")]
     public string Senha { get; set; }
 
     [DataType(DataType.Password)]

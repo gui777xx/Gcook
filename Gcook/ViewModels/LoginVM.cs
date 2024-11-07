@@ -13,8 +13,8 @@ public class LoginVM
     [DataType(DataType.Password)]
     public string Senha { get; set; }
 
-    [Display(Name ="Manter Conectado?")]
+    [Display(Name = "Manter Conectado?")]
     public bool Lembrar { get; set; } = false;
 
-    public string UrlRetorno { get; set; }
+    public string UrlRetorno { get; set; } 
 }

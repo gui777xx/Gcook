@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GCook.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240826152038_criarBanco")]
-    partial class criarBanco
+    [Migration("20240821110338_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -313,6 +313,10 @@ namespace GCook.Migrations
                         .HasColumnType("int")
                         .HasColumnOrder(2);
 
+                    b.Property<string>("Preparo")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
                     b.Property<string>("Quantidade")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -430,9 +434,9 @@ namespace GCook.Migrations
                         new
                         {
                             UsuarioId = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
-                            DataNascimento = new DateTime(2007, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataNascimento = new DateTime(1981, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "/img/usuarios/avatar.png",
-                            Nome = "Carlos Eduardo Passarelli da Silva"
+                            Nome = "José Antonio Gallo Junior"
                         });
                 });
 
@@ -575,15 +579,15 @@ namespace GCook.Migrations
                         {
                             Id = "ddf093a6-6cb5-4ff7-9a64-83da34aee005",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cd47e39b-77b4-4be2-a5a3-103382ba4934",
+                            ConcurrencyStamp = "7aaf247d-0a55-4192-8028-e4a1dde73b3c",
                             Email = "admin@gcook.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GCOOK.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEN9DJORZNqWGzsS0KImMNlDvLyT0XOtU6wQz2KghdpkMfcT8e6NlES6s9E7I0xrwug==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFcpZthWGAi6KHOu+/7yRjmTt/hl6Hxlchmhde3XPbCdjm1KWBt7Fv+poarsR0kGyw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "69c9d420-fd3e-450b-b63e-ed8c96c60492",
+                            SecurityStamp = "e8331602-5b3b-4358-a851-5c63bad146dd",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });

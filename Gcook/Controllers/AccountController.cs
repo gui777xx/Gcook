@@ -1,6 +1,6 @@
-using GCook.Services;
-using GCook.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using GCook.ViewModels;
+using GCook.Services;
 
 namespace GCook.Controllers;
 
@@ -20,7 +20,7 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult Login (string returnUrl)
+    public IActionResult Login(string returnUrl)
     {
         LoginVM login = new()
         {

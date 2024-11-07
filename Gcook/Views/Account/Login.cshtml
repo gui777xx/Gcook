@@ -33,16 +33,16 @@
 </p>
 
 @section Scripts {
-    <script type ="text/javascript">
-    let mensagemErro = '';
-    $(".validation-summary-errors ul li").each(function () {
-        mensagemErro += $(this).text() + '<br/>';
-    });
-    if (mensagemErro != '')
-        swal.fire(
-            'Acesso Negado',
-            mensagemErro,
-            'error'
-        );
+    <script type="text/javascript">
+        let mensagemErro = '';
+        $(".validation-summary-errors ul li").each(function () {
+            mensagemErro += $(this).text() + '<br/>';
+        });
+        if (mensagemErro != '')
+            swal.fire(
+                'Acesso Negado',
+                mensagemErro,
+                'error'
+            );
     </script>
 }

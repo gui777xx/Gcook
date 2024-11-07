@@ -6,19 +6,16 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Adicionar um serviço de conexão de banco de dados
 string conexao = builder.Configuration.GetConnectionString("Conexao");
 var versao = ServerVersion.AutoDetect(conexao);
 builder.Services.AddDbContext<AppDbContext>(
-    options => options.UseMySql(conexao, versao)
+    Options => Options.UseMySql(conexao, versao)
 );
-
-// Adicionar um serviço de gestão de usuários
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(
     opt => opt.SignIn.RequireConfirmedEmail = true
 )
-    .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IUsuarioService, UsuarioService>();
