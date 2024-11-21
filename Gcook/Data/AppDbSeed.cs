@@ -258,6 +258,15 @@ public class AppDbSeed
                 NormalizedUserName = "ADMIN",
                 LockoutEnabled = false,
                 EmailConfirmed = true,
+            },
+            new IdentityUser(){
+                Id = "bec71b05-8f3d-4849-88bb-0e8d518d2de8",
+                Email = "anagiovanni66@gmail.com",
+                NormalizedEmail = "ANAGIOVANNI66@GMAIL.COM",
+                UserName = "Ana Giovanni",
+                NormalizedUserName = "ANA GIOVANNI", // Corrigir o nome normalizado
+                LockoutEnabled = false,
+                EmailConfirmed = true,
             }
         };
         foreach (var user in users)
@@ -266,16 +275,6 @@ public class AppDbSeed
             user.PasswordHash = pass.HashPassword(user, "@Etec123");
         }
         builder.Entity<IdentityUser>().HasData(users);
-
-        List<Usuario> usuarios = new(){
-            new Usuario(){
-                UsuarioId = users[0].Id,
-                Nome = "José Antonio Gallo Junior",
-                DataNascimento = DateTime.Parse("05/08/1981"),
-                Foto = "/img/usuarios/avatar.png"
-            }
-        };
-        builder.Entity<Usuario>().HasData(usuarios);
         #endregion
 
         #region Populate UserRole - Usuário com Perfil
@@ -292,7 +291,15 @@ public class AppDbSeed
             new IdentityUserRole<string>() {
                 UserId = users[0].Id,
                 RoleId = roles[2].Id
-            }
+            },
+    new IdentityUserRole<string>() {
+        UserId = users[1].Id, // Segundo usuário (Ana Giovanni)
+        RoleId = roles[1].Id // Usuário
+    },
+    new IdentityUserRole<string>() {
+        UserId = users[1].Id, // Segundo usuário (Ana Giovanni)
+        RoleId = roles[2].Id // Moderador
+    }
         };
         builder.Entity<IdentityUserRole<string>>().HasData(userRoles);
         #endregion

@@ -1,4 +1,5 @@
 @model GCook.ViewModels.LoginVM
+
 @{
     ViewData["Title"] = "Login";
     ViewData["SubTitle"] = "Entrar";
@@ -7,7 +8,7 @@
 
 <form class="form-signin" method="post">
     <div asp-validation-summary="ModelOnly" hidden></div>
-    <input type="hidden" asp-for="UrlRetorno">
+    <input type="hidden" asp-formaction="UrlRetorno">
 
     <div class="form-floating mb-3">
         <input asp-for="Email" class="form-control">
@@ -19,7 +20,7 @@
         <label asp-for="Senha"></label>
         <span asp-validation-for="Senha" class="text-danger text-sm"></span>
     </div>
-    <div class="mb-3 form-check text-white">
+    <div class="form-check mb-3 text-white">
         <input type="checkbox" class="form-check-input" asp-for="Lembrar">
         <label class="form-check-label" asp-for="Lembrar"></label>
     </div>
@@ -35,7 +36,7 @@
 @section Scripts {
     <script type="text/javascript">
         let mensagemErro = '';
-        $(".validation-summary-errors ul li").each(function () {
+        $(".validation-sumary-errors ul li").each(function () {
             mensagemErro += $(this).text() + '<br/>';
         });
         if (mensagemErro != '')
@@ -44,5 +45,6 @@
                 mensagemErro,
                 'error'
             );
+
     </script>
 }

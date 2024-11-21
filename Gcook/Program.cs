@@ -9,8 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 string conexao = builder.Configuration.GetConnectionString("Conexao");
 var versao = ServerVersion.AutoDetect(conexao);
 builder.Services.AddDbContext<AppDbContext>(
-    Options => Options.UseMySql(conexao, versao)
+    options => options.UseMySql(conexao, versao)
 );
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(
     opt => opt.SignIn.RequireConfirmedEmail = true
 )
@@ -36,7 +37,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

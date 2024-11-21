@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GCook.Data;
 using GCook.Models;
 
-namespace Gcook.Controllers
+namespace GCook.Controllers
 {
     public class ReceitasController : Controller
     {
@@ -57,29 +57,16 @@ namespace Gcook.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao,TempoPreparo,Rendimento,Dificuldade,Foto,Preparo,CategoriaId")] Receita receita, IFormFile Foto)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao,TempoPreparo,Rendimento,Dificuldade,Foto,Preparo,CategoriaId")] Receita receita)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(receita);
                 await _context.SaveChangesAsync();
-
-                    if (Foto != null)
-                {
-                    string nomeArquivo = categoria.Id + Path.GetExtension(Foto.FileName);
-                    string caminho =Path.Combine(_host.WebRootPath, "img/categorias");
-                    string arquivo = Path.Combine(caminho, nomeArquivo);
-                    using (FileStream stream= new(arquivo, FileMode.Create))
-                    {
-                        Foto.CopyTo(stream);
-                    }
-                    categoria.Foto = "img/categorias" + nomeArquivo;
-                    await _context.SaveChangesAsync();
-                }            
-
                 return RedirectToAction(nameof(Index));
             }
-                        return View(receita);
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Nome", receita.CategoriaId);
+            return View(receita);
         }
 
         // GET: Receitas/Edit/5

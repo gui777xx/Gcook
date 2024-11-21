@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GCook.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class criarBanco : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -325,8 +325,6 @@ namespace GCook.Migrations
                     ReceitaId = table.Column<int>(type: "int", nullable: false),
                     IngredienteId = table.Column<int>(type: "int", nullable: false),
                     Quantidade = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Preparo = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -360,7 +358,7 @@ namespace GCook.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", 0, "7aaf247d-0a55-4192-8028-e4a1dde73b3c", "admin@gcook.com", true, false, null, "ADMIN@GCOOK.COM", "ADMIN", "AQAAAAIAAYagAAAAEFcpZthWGAi6KHOu+/7yRjmTt/hl6Hxlchmhde3XPbCdjm1KWBt7Fv+poarsR0kGyw==", null, false, "e8331602-5b3b-4358-a851-5c63bad146dd", false, "Admin" });
+                values: new object[] { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", 0, "b13428f5-a29a-4cb5-ac4f-c1734226cf1f", "admin@gcook.com", true, false, null, "ADMIN@GCOOK.COM", "ADMIN", "AQAAAAIAAYagAAAAEHZ6w/eLJ2B4edVhLy88xbjxhGO69IFs+K1pkGY2B2kN8qZzDOvbc2Wwd+lPhUTqgA==", null, false, "c316d152-0f6f-4119-aa64-cd761399c5bd", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "Categoria",
@@ -418,26 +416,26 @@ namespace GCook.Migrations
             migrationBuilder.InsertData(
                 table: "Usuario",
                 columns: new[] { "UsuarioId", "DataNascimento", "Foto", "Nome" },
-                values: new object[] { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", new DateTime(1981, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/avatar.png", "José Antonio Gallo Junior" });
+                values: new object[] { "ddf093a6-6cb5-4ff7-9a64-83da34aee005", new DateTime(1981, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/avatar.png", "ana giovanni" });
 
             migrationBuilder.InsertData(
                 table: "ReceitaIngrediente",
-                columns: new[] { "IngredienteId", "ReceitaId", "Preparo", "Quantidade" },
+                columns: new[] { "IngredienteId", "ReceitaId", "Quantidade" },
                 values: new object[,]
                 {
-                    { 1, 1, null, "500g" },
-                    { 3, 1, null, "1 pequeno" },
-                    { 4, 1, null, "1 pequeno" },
-                    { 5, 1, null, "1 pequeno" },
-                    { 6, 1, null, "1 colher sopa" },
-                    { 7, 1, null, "1 colher sopa" },
-                    { 8, 1, null, "1 colher sopa" },
-                    { 9, 1, null, "1 colher sopa" },
-                    { 10, 1, null, "1 colher sopa" },
-                    { 11, 1, null, "A vontade" },
-                    { 12, 1, null, "200g" },
-                    { 13, 1, null, "200g" },
-                    { 14, 1, null, "Um pouco" }
+                    { 1, 1, "500g" },
+                    { 3, 1, "1 pequeno" },
+                    { 4, 1, "1 pequeno" },
+                    { 5, 1, "1 pequeno" },
+                    { 6, 1, "1 colher sopa" },
+                    { 7, 1, "1 colher sopa" },
+                    { 8, 1, "1 colher sopa" },
+                    { 9, 1, "1 colher sopa" },
+                    { 10, 1, "1 colher sopa" },
+                    { 11, 1, "A vontade" },
+                    { 12, 1, "200g" },
+                    { 13, 1, "200g" },
+                    { 14, 1, "Um pouco" }
                 });
 
             migrationBuilder.CreateIndex(

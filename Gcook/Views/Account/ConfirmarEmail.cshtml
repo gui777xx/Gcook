@@ -1,22 +1,24 @@
 @model bool
+
 @{
-    ViewData["Title"] = "Confirmação de Conta";
-    ViewData["SubTitle"] = Model ? "Conta Confirmada com Sucesso" : "Problemas ao Confirmar Conta";
+    ViewData["Title"] = "Confirmação da Conta";
+    ViewData["SubTitle"] = Model ? "Conta confirmada com Sucesso" : "Problemas ao confirmar a conta";
     Layout = "~/Views/Shared/_LayoutAccount.cshtml";
 }
 
 <div class="card-body text-center text-white">
-    <h4 class="mb-2">As Melhores Receitas da Internet</h4>
+    <h4 class="mb-2">
+        As Melhores Receitas da Internet
+    </h4>
     @if (Model)
     {
         <p class="mb-4 fs-5">Obrigado por confirmar seu email, clique no botão abaixo para entrar!</p>
-        <a asp-action="Login" asp-controller="Account" class="btn btn-danger text-white">Ir para o Login</a>
+        <a asp-action="Login" asp-controller="Account" class="btn btn-danger text-white"> Ir para o Login</a>
     }
-    else
+    else 
     {
-        <p class="mb-4 fs-5">Infelizmente ocorreu um problema com a confirmação de sua conta! Entre em contato para solucionarmos
-            seu problema</p>
+        <p class="mb-4 fs-5">Infelizmente ocorreu um problema com a confirmação da sua conta! 
+            Entre em contato para solucionarmos o problema
+        </p>
     }
-</div> 
-
-
+</div>

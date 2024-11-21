@@ -51,31 +51,27 @@ namespace GCook.Controllers
             return View();
         }
 
-        // POST: Categorias/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Foto,ExibirHome")] Categoria categoria, IFormFile Foto)
+        public async Task<IActionResult> Create([Bind("Id, Nome, Foto, ExibirHome")] Categoria categoria, IFormFile Foto)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(categoria);
                 await _context.SaveChangesAsync();
 
-                if (Foto != null)
+                if(Foto != null)
                 {
                     string nomeArquivo = categoria.Id + Path.GetExtension(Foto.FileName);
-                    string caminho =Path.Combine(_host.WebRootPath, "img/categorias");
+                    string caminho = Path.Combine(_host.WebRootPath, "img/categorias");
                     string arquivo = Path.Combine(caminho, nomeArquivo);
-                    using (FileStream stream= new(arquivo, FileMode.Create))
+                    using (FileStream stream = new(arquivo, FileMode.Create))
                     {
                         Foto.CopyTo(stream);
                     }
-                    categoria.Foto = "img/categorias" + nomeArquivo;
+                    categoria.Foto = "img/categorias/" + nomeArquivo;
                     await _context.SaveChangesAsync();
-                }            
-
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(categoria);

@@ -6,7 +6,8 @@
 }
 
 <h1>Create</h1>
-<h4>Adicionar</h4>
+
+<h4>Categoria</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,29 +20,32 @@
             </div>
             <div class="mb-3 form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="ExibirHome" /> @Html.DisplayNameFor(model => model.ExibirHome)
+                    <input class="form-check-input" asp-for="ExibirHome" /> @Html.DisplayNameFor(model =>
+                    model.ExibirHome)
                 </label>
             </div>
             <div class="mb-3">
                 <label asp-for="Foto" class="control-label"></label>
                 <img id='Preview'>
-                <input name="Foto" type="file" class="form-control" accept=".png, .jpg, .jpeg, .gif" />
+                <input name="Foto" type="file" class="form-control" accept=".jpg,.jpeg,.png,.gif" />
+                <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <input type="submit" value="Salvar" class="btn btn-success" />
-                    <a asp-action="Index" class="btn btn-danger ms-2">Cancelar</a>
+                <a asp-action="Index" class="btn btn-danger ms-2">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial"></partial>
     <script>
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function(){
             document.querySelector('input[type=file]')
-            .addEventListener('change', function() {
-                if (this.files && this.files[0] {
+            .addEventListener('change', function(){
+                if (this.files && this.files[0]){
                     var img = document.getElementById('Preview');
                     img.scr = URL.createObjectURL(this.files[0]);
                 }

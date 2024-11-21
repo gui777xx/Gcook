@@ -1,17 +1,15 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore.Identity;
 using GCook.Data;
 using GCook.ViewModels;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 using GCook.Helpers;
 using GCook.Models;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
 using System.Text.Encodings.Web;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace GCook.Services;
-
 public class UsuarioService : IUsuarioService
 {
     private readonly AppDbContext _contexto;
@@ -23,7 +21,6 @@ public class UsuarioService : IUsuarioService
     private readonly IWebHostEnvironment _hostEnvironment;
     private readonly IEmailSender _emailSender;
     private readonly ILogger<UsuarioService> _logger;
-
 
     public UsuarioService(
         AppDbContext contexto,
@@ -54,6 +51,7 @@ public class UsuarioService : IUsuarioService
         {
             return false;
         }
+
         code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
         var result = await _userManager.ConfirmEmailAsync(user, code);
         return result.Succeeded;
@@ -66,6 +64,7 @@ public class UsuarioService : IUsuarioService
         {
             return null;
         }
+
         var userAccount = await _userManager.FindByIdAsync(userId);
         var usuario = await _contexto.Usuarios.Where(u => u.UsuarioId == userId).SingleOrDefaultAsync();
         var perfis = string.Join(", ", await _userManager.GetRolesAsync(userAccount));
@@ -95,13 +94,16 @@ public class UsuarioService : IUsuarioService
         }
 
         var result = await _signInManager.PasswordSignInAsync(
-            userName, login.Senha, login.Lembrar, lockoutOnFailure: true
-        );
+            userName, login.Senha, login.Lembrar, lockoutOnFailure: true);
 
         if (result.Succeeded)
+        {
             _logger.LogInformation($"Usuário {login.Email} acessou o sistema");
-        if (result.IsLockedOut)
+        }
+        else if (result.IsLockedOut)
+        {
             _logger.LogWarning($"Usuário {login.Email} está bloqueado");
+        }
 
         return result;
     }
@@ -140,6 +142,7 @@ public class UsuarioService : IUsuarioService
                 DataNascimento = registro.DataNascimento ?? DateTime.Now,
                 Nome = registro.Nome
             };
+
             if (registro.Foto != null)
             {
                 string fileName = userId + Path.GetExtension(registro.Foto.FileName);
@@ -149,12 +152,12 @@ public class UsuarioService : IUsuarioService
                 {
                     registro.Foto.CopyTo(stream);
                 }
+
                 usuario.Foto = @"\img\usuarios\" + fileName;
             }
+
             _contexto.Add(usuario);
             await _contexto.SaveChangesAsync();
-
-            return null;
         }
 
         List<string> errors = new();
@@ -162,8 +165,11 @@ public class UsuarioService : IUsuarioService
         {
             errors.Add(TranslateIdentityErrors.TranslateErrorMessage(error.Code));
         }
+
         return errors;
     }
+
+
 
 
     private string GetConfirmEmailHtml(string url)
@@ -426,7 +432,4 @@ public class UsuarioService : IUsuarioService
         ";
         return email;
     }
-
-
-
 }

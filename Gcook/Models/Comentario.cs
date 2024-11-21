@@ -12,6 +12,7 @@ public class Comentario
     [Required]
     public int ReceitaId { get; set; }
     [ForeignKey("ReceitaId")]
+    
     public Receita Receita { get; set; }
 
     [Required]
